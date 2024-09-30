@@ -1,12 +1,16 @@
 module Pages.Home_ exposing (Model, Msg, page)
 
 import Browser.Navigation exposing (Key)
+import Dict
 import Effect exposing (Effect)
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events
+import Layouts
+import Layouts.CommonHero
 import Page exposing (Page)
 import Route exposing (Route)
+import Route.Path
 import Shared
 import View exposing (View)
 
@@ -23,6 +27,13 @@ page shared route =
         , subscriptions = subscriptions
         , view = view
         }
+        |> Page.withLayout layout
+
+
+layout : Shared.Model -> Layouts.Layout Msg
+layout model =
+    Layouts.CommonHero
+        {}
 
 
 
@@ -30,13 +41,12 @@ page shared route =
 
 
 type alias Model =
-    { isBurgerIconActive : Bool
-    }
+    {}
 
 
 init : () -> ( Model, Effect Msg )
 init () =
-    ( { isBurgerIconActive = False }
+    ( {}
     , Effect.none
     )
 
@@ -46,15 +56,131 @@ init () =
 
 
 type Msg
-    = BurgerIconClicked
+    = NoOp
+    | July2019ReadMoreClicked
+    | SwiftBeginsUpskillReadMoreClicked
+    | FunctionalProgrammingUpskillReadMoreClicked
+    | GeometricAlgebraUpskillReadMoreClicked
+    | ReactAndElmUpskillReadMoreClicked
+    | GoAndElmUpskillReadMoreClicked
+    | Jan2023ToMay2024ReadMoreClicked
+    | April2021ToDec2022ReadMoreClicked
+    | May2020ToMar2021ReadMoreClicked
+    | July2019ToMar2020ReadMoreClicked
+    | May2024ReadMoreClicked
+    | June2024ReadMoreClicked
 
 
 update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
-        BurgerIconClicked ->
-            ( { model | isBurgerIconActive = True }
+        NoOp ->
+            ( model
             , Effect.none
+            )
+
+        July2019ReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.Munich_diaries
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        SwiftBeginsUpskillReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.Swiftjourney
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        FunctionalProgrammingUpskillReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.Functionalprogramming
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        GeometricAlgebraUpskillReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.Geometricalgebra
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        ReactAndElmUpskillReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.LearningElm
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        GoAndElmUpskillReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.LearningGo
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        Jan2023ToMay2024ReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                -- TA
+                { path = Route.Path.Featuredevelopment_traffic_assist
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        April2021ToDec2022ReadMoreClicked ->
+            ( model
+              -- Dspace
+            , Effect.pushRoute
+                { path = Route.Path.Dspace
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        May2020ToMar2021ReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.DaiFeatureDevelopment
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        July2019ToMar2020ReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.ProjectBMW
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        May2024ReadMoreClicked ->
+            ( model, Effect.none )
+
+        June2024ReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.Techkunstler
+                , query = Dict.empty
+                , hash = Nothing
+                }
             )
 
 
@@ -76,80 +202,9 @@ view model =
     { title = "Pages.Home_"
     , body =
         [ -- Html.text "/home_"
-          hero model
-        , timelineView model
+          timelineView model
         ]
     }
-
-
-hero : Model -> Html Msg
-hero model =
-    Html.section [ Attr.class "hero is-fullwidth has-background-primary-05 has-text-centered " ]
-        [ Html.div
-            [ Attr.class "hero-body" ]
-            [ profilePicview model
-            ]
-        ]
-
-
-iconsListView : Model -> Html Msg
-iconsListView model =
-    Html.div []
-        [ Html.ul [ Attr.class "icons ml-0" ]
-            [ Html.li [ Attr.class "is-inline is-size-4" ]
-                [ Html.a
-                    [ Attr.href "#contact"
-                    , Attr.class "fa-solid fa-envelope has-text-white "
-                    ]
-                    []
-                ]
-            , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
-                [ Html.a
-                    [ Attr.href "#mobile"
-                    , Attr.class "fas fa-mobile has-text-white"
-                    ]
-                    []
-                ]
-            , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
-                [ Html.a
-                    [ Attr.href "#github"
-                    ]
-                    [ Html.i
-                        [ Attr.class "fab fa-github has-text-white"
-                        ]
-                        []
-                    ]
-                ]
-            , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
-                [ Html.a
-                    [ Attr.href "#linkedin"
-                    , Attr.class "fab fa-linkedin has-text-white"
-                    ]
-                    []
-                ]
-            ]
-        ]
-
-
-profilePicview : Model -> Html Msg
-profilePicview model =
-    Html.section [ Attr.class "section" ]
-        [ Html.div [ Attr.class "content is-mobile is-centered" ]
-            [ Html.div [ Attr.class "is-half has-text-centered" ]
-                [ Html.figure [ Attr.class "image is-inline-block mb-0 mt-3" ]
-                    [ Html.img
-                        [ Attr.class "is-rounded is-128x128"
-                        , Attr.src "./assets/man.webp"
-                        ]
-                        []
-                    ]
-                , Html.p [ Attr.class "is-size-2 has-text-white" ] [ Html.text "Santhosh K S" ]
-                , Html.p [ Attr.class "is-size-4 " ] [ Html.text "Seasoned professional" ]
-                , Html.p [ Attr.class "has-text-white" ] [ Html.text "C,C++,Matlab,Python,Go,Swift,Embedded systems,Fullstack developer" ]
-                , iconsListView model
-                ]
-            ]
-        ]
 
 
 type alias KeyValPair =
@@ -187,6 +242,7 @@ type alias ItemContent =
     { content : TitleSubtitle
     , icon : Icon
     , projectDetails : List KeyValPair
+    , event : Msg
     }
 
 
@@ -199,6 +255,7 @@ june2024 =
         , { key = "Company", value = "TechKunstler" }
         , { key = "Location", value = "Bengaluru, Karnataka, India" }
         ]
+    , event = June2024ReadMoreClicked
     }
 
 
@@ -207,6 +264,7 @@ may2024 =
     { content = { key = "May 2024 : Munich Germany", value = "Completed 5 years at KPIT Gmbh Munich as Senior Solution Architect" }
     , icon = { icon = "fa-solid fa-pen-nib" }
     , projectDetails = [ { key = "Role", value = "Senior Solution Architecht" } ]
+    , event = May2024ReadMoreClicked
     }
 
 
@@ -224,6 +282,7 @@ july2019ToMar2020 =
         , { key = "Technologies", value = "C++11, Bazel, OpenCV, Python, Shell Scripting, Large scale SCRUM" }
         , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, , Project delivery" }
         ]
+    , event = July2019ToMar2020ReadMoreClicked
     }
 
 
@@ -242,6 +301,7 @@ may2020ToMar2021 =
         , { key = "Tools", value = "Confluence, JIRA, Codebeamer, Github, ZUUL, CI-CD, Jenkins" }
         , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
         ]
+    , event = May2020ToMar2021ReadMoreClicked
     }
 
 
@@ -260,6 +320,7 @@ april2021ToDec2022 =
         , { key = "Tools", value = "Confluence, Codebeamer, JIRA, Github, ZUUL, CI-CD, Jenkins" }
         , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
         ]
+    , event = April2021ToDec2022ReadMoreClicked
     }
 
 
@@ -278,6 +339,7 @@ jan2023ToMay2024 =
         , { key = "Tools", value = "Confluence, Codebeamer, JIRA, Github, ZUUL, CI-CD, Jenkins" }
         , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
         ]
+    , event = Jan2023ToMay2024ReadMoreClicked
     }
 
 
@@ -289,6 +351,61 @@ jan2023ToMay2024 =
 -}
 
 
+goAndElm : ItemContent
+goAndElm =
+    { content = { key = "Backend", value = "Upskill" }
+    , icon = { icon = " fa-solid fa-book" }
+    , projectDetails =
+        [ { key = "Learn", value = "Started building full stack applications using go and Elm" }
+        ]
+    , event = GoAndElmUpskillReadMoreClicked
+    }
+
+
+reactAndElm : ItemContent
+reactAndElm =
+    { content = { key = "Frontend", value = "Upskill" }
+    , icon = { icon = " fa-solid fa-book" }
+    , projectDetails =
+        [ { key = "Learn", value = "Started building React Native applications and Elm Applications" }
+        ]
+    , event = ReactAndElmUpskillReadMoreClicked
+    }
+
+
+geometricAlgebra : ItemContent
+geometricAlgebra =
+    { content = { key = "Geometric Algebra", value = "Upskill" }
+    , icon = { icon = " fa-solid fa-book" }
+    , projectDetails =
+        [ { key = "Learn", value = "Started learning about 3D graphics using Geometric Algebra" }
+        ]
+    , event = GeometricAlgebraUpskillReadMoreClicked
+    }
+
+
+functionalProgramming : ItemContent
+functionalProgramming =
+    { content = { key = "Functional Programming", value = "Upskill" }
+    , icon = { icon = " fa-solid fa-book" }
+    , projectDetails =
+        [ { key = "Learn", value = "Started learning about Functional Programming" }
+        ]
+    , event = FunctionalProgrammingUpskillReadMoreClicked
+    }
+
+
+swiftBegins : ItemContent
+swiftBegins =
+    { content = { key = "Swift", value = "Upskill" }
+    , icon = { icon = " fa-solid fa-book" }
+    , projectDetails =
+        [ { key = "Learn", value = "Started learning about Swift programming language" }
+        ]
+    , event = SwiftBeginsUpskillReadMoreClicked
+    }
+
+
 jul2019 : ItemContent
 jul2019 =
     { content = { key = "July 2019", value = "Moved to Munich Germany." }
@@ -297,6 +414,7 @@ jul2019 =
         [ { key = "NewJob", value = "Solution Architecht @KPIT GmbH" }
         , { key = "Location", value = "Munich, Germany" }
         ]
+    , event = July2019ReadMoreClicked
     }
 
 
@@ -308,9 +426,14 @@ timelineView model =
             ]
         , timeLineItemView june2024
         , timeLineItemView may2024
+        , timeLineItemView goAndElm
+        , timeLineItemView reactAndElm
         , timeLineItemView jan2023ToMay2024
+        , timeLineItemView geometricAlgebra
         , timeLineItemView april2021ToDec2022
+        , timeLineItemView functionalProgramming
         , timeLineItemView may2020ToMar2021
+        , timeLineItemView swiftBegins
         , timeLineItemView july2019ToMar2020
         , timeLineItemView jul2019
 
@@ -330,7 +453,11 @@ timeLineItemView props =
             [ Html.p [ Attr.class "heading" ] [ Html.text props.content.key ]
             , Html.p [] [ Html.text props.content.value ]
             , sideCardNotificationDetailsView props.projectDetails
-            , Html.a [ Attr.class "button has-background-primary-10" ] [ Html.text "Read More..." ]
+            , Html.a
+                [ Attr.class "button has-background-primary-10"
+                , Html.Events.onClick props.event
+                ]
+                [ Html.text "Read More..." ]
             ]
         ]
 

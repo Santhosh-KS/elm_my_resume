@@ -23,7 +23,12 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        {}
+        { backgroundImageUrl = "https://cdn.freebiesupply.com/logos/large/2x/elm-logo-png-transparent.png"
+
+        -- , position = "right 1% bottom 2%"
+        , position = " center"
+        , size = "10%"
+        }
 
 
 

@@ -1,10 +1,12 @@
 module Pages.Home_ exposing (Model, Msg, page)
 
+-- import Date
+
 import Browser.Navigation exposing (Key)
 import Dict
 import Effect exposing (Effect)
 import Html exposing (Html)
-import Html.Attributes as Attr
+import Html.Attributes as Attr exposing (datetime)
 import Html.Events
 import Layouts
 import Layouts.CommonHero
@@ -33,7 +35,10 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        {}
+        { backgroundImageUrl = "https://picsum.photos/id/381/1920/1080"
+        , position = "bottom"
+        , size = "100%"
+        }
 
 
 
@@ -69,6 +74,7 @@ type Msg
     | July2019ToMar2020ReadMoreClicked
     | May2024ReadMoreClicked
     | June2024ReadMoreClicked
+    | AboutMeButtonClicked
 
 
 update : Msg -> Model -> ( Model, Effect Msg )
@@ -91,7 +97,7 @@ update msg model =
         SwiftBeginsUpskillReadMoreClicked ->
             ( model
             , Effect.pushRoute
-                { path = Route.Path.Swiftjourney
+                { path = Route.Path.LearningSwift
                 , query = Dict.empty
                 , hash = Nothing
                 }
@@ -183,6 +189,15 @@ update msg model =
                 }
             )
 
+        AboutMeButtonClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.About
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
 
 
 -- SUBSCRIPTIONS
@@ -202,7 +217,10 @@ view model =
     { title = "Pages.Home_"
     , body =
         [ -- Html.text "/home_"
-          timelineView model
+          aboutMe
+        , Html.div [ Attr.style "border-top" "10px solid turquoise" ] []
+        , timelineView model
+        , Html.div [ Attr.style "border-top" "10px solid turquoise" ] []
         ]
     }
 
@@ -276,11 +294,13 @@ july2019ToMar2020 =
         [ { key = "Role", value = "C++ Developer and Bridge head" }
         , { key = "Project", value = "Built C++ Applications to validate the performance of the camers used in the ADAS systems" }
         , { key = "Client", value = "BMW" }
-        , { key = "TeamName", value = "Ramanujan" }
         , { key = "Location", value = "Munich Germany" }
         , { key = "Domain", value = "Automotive" }
         , { key = "Technologies", value = "C++11, Bazel, OpenCV, Python, Shell Scripting, Large scale SCRUM" }
-        , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, , Project delivery" }
+
+        {- , { key = "TeamName", value = "Ramanujan" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, , Project delivery" }
+        -}
         ]
     , event = July2019ToMar2020ReadMoreClicked
     }
@@ -293,13 +313,15 @@ may2020ToMar2021 =
     , projectDetails =
         [ { key = "Role", value = "C++ Developer and Scrum Master" }
         , { key = "Project", value = "Drive away information (DAI) feature for ADAS" }
-        , { key = "Client", value = "Volvo cars / Veoneer / Arriver GmbH" }
+        , { key = "Client", value = "Volvo / Veoneer / Arriver GmbH" }
         , { key = "Location", value = "Munich Germany" }
         , { key = "Domain", value = "Automotive" }
-        , { key = "TeamName", value = "Vikings" }
         , { key = "Technologies", value = "C++11, Python, Shell scripting, SCRUM" }
         , { key = "Tools", value = "Confluence, JIRA, Codebeamer, Github, ZUUL, CI-CD, Jenkins" }
-        , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+
+        {- , { key = "TeamName", value = "Vikings" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+        -}
         ]
     , event = May2020ToMar2021ReadMoreClicked
     }
@@ -315,10 +337,12 @@ april2021ToDec2022 =
         , { key = "Client", value = " Arriver GmbH / Qualcomm " }
         , { key = "Location", value = "Munich Germany" }
         , { key = "Domain", value = "Automotive" }
-        , { key = "TeamName", value = "Vikings" }
         , { key = "Technologies", value = "Dspace, Synect, Matlab, m-script, python" }
         , { key = "Tools", value = "Confluence, Codebeamer, JIRA, Github, ZUUL, CI-CD, Jenkins" }
-        , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+
+        {- , { key = "TeamName", value = "Vikings" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+        -}
         ]
     , event = April2021ToDec2022ReadMoreClicked
     }
@@ -334,10 +358,12 @@ jan2023ToMay2024 =
         , { key = "Client", value = " Qualcomm " }
         , { key = "Location", value = "Munich Germany" }
         , { key = "Domain", value = "Automotive" }
-        , { key = "TeamName", value = "Vikings" }
         , { key = "Technologies", value = "Matlab, C++, m-script, python, shell scripting" }
         , { key = "Tools", value = "Confluence, Codebeamer, JIRA, Github, ZUUL, CI-CD, Jenkins" }
-        , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+
+        {- , { key = "TeamName", value = "Vikings" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+        -}
         ]
     , event = Jan2023ToMay2024ReadMoreClicked
     }
@@ -416,6 +442,32 @@ jul2019 =
         ]
     , event = July2019ReadMoreClicked
     }
+
+
+section1 =
+    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift, and Matlab. I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications."
+
+
+aboutMe : Html Msg
+aboutMe =
+    Html.div [ Attr.class "container" ]
+        [ Html.div [ Attr.class "section" ]
+            [ Html.div [ Attr.class "card" ]
+                [ Html.div [ Attr.class "card-content" ]
+                    [ Html.div [ Attr.class "content" ]
+                        [ Html.div [ Attr.class "title has-text-centered" ]
+                            [ Html.text "About Me" ]
+                        , Html.p [] [ Html.text section1 ]
+                        , Html.a
+                            [ Attr.class "buttom is-primary is-right"
+                            , Html.Events.onClick AboutMeButtonClicked
+                            ]
+                            [ Html.text "Read More.." ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
 
 
 timelineView : Model -> Html Msg

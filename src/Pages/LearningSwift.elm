@@ -1,4 +1,4 @@
-module Pages.Swiftjourney exposing (Model, Msg, page)
+module Pages.LearningSwift exposing (Model, Msg, page)
 
 import Effect exposing (Effect)
 import Html
@@ -23,7 +23,10 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        {}
+        { backgroundImageUrl = "https://developer.apple.com/swift/images/swift-logo.svg"
+        , position = "right 1% bottom 2%"
+        , size = "5%"
+        }
 
 
 

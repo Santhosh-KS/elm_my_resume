@@ -23,7 +23,10 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        {}
+        { backgroundImageUrl = "https://cdn.pixabay.com/photo/2021/11/20/05/15/car-6810885_1280.jpg"
+        , position = "bottom"
+        , size = "100%"
+        }
 
 
 

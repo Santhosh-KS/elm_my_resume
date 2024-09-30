@@ -23,7 +23,12 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        {}
+        { backgroundImageUrl = "https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png"
+
+        -- , position = "right 1% bottom 2%"
+        , position = "center"
+        , size = "60%"
+        }
 
 
 

@@ -5,12 +5,16 @@ import Html exposing (Html)
 import Html.Attributes as Attr
 import Layout exposing (Layout)
 import Route exposing (Route)
+import Route.Path
 import Shared
 import View exposing (View)
 
 
 type alias Props =
-    {}
+    { backgroundImageUrl : String
+    , position : String
+    , size : String
+    }
 
 
 layout : Props -> Shared.Model -> Route () -> Layout () Model Msg contentMsg
@@ -18,7 +22,7 @@ layout props shared route =
     Layout.new
         { init = init
         , update = update
-        , view = view
+        , view = view props route
         , subscriptions = subscriptions
         }
 
@@ -62,10 +66,20 @@ subscriptions model =
 
 
 -- VIEW
+{- applyOnlyToHome : Route () -> Html Msg
+   applyOnlyToHome route =
+-}
 
 
-view : { toContentMsg : Msg -> contentMsg, content : View contentMsg, model : Model } -> View contentMsg
-view { toContentMsg, model, content } =
+view : Props -> Route () -> { toContentMsg : Msg -> contentMsg, content : View contentMsg, model : Model } -> View contentMsg
+view props route { toContentMsg, model, content } =
+    let
+        hidden =
+            Attr.hidden
+                (route.path
+                    /= Route.Path.Home_
+                )
+    in
     { title = content.title
 
     {- , body =
@@ -75,7 +89,13 @@ view { toContentMsg, model, content } =
     -}
     , body =
         [ Html.div []
-            [ hero model
+            [ Html.div
+                [ Attr.style "border-top" "10px solid coral"
+                , hidden
+                ]
+                []
+            , hero props route
+            , Html.div [ Attr.style "border-top" "10px solid coral", hidden ] []
             ]
             |> Html.map toContentMsg
         , viewMainContent
@@ -86,66 +106,59 @@ view { toContentMsg, model, content } =
     }
 
 
-
-{- .hero {
-     background-image: url(https://picsum.photos/id/381/1920/1080);
-     background: linear-gradient(rgba(31, 44, 108, 0.65), rgba(31, 44, 108, 0.65)), rgba(0, 0, 0, 0.55) url("https://picsum.photos/id/381/1920/1080") no-repeat;
-     background-attachment: fixed;
-     background-size: cover;
-     color: white;
-     box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-     font-family: 'Poppins', sans-serif;
-   }
--}
-
-
-hero : Model -> Html Msg
-hero model =
+hero : Props -> Route () -> Html Msg
+hero props route =
+    let
+        url : String
+        url =
+            "url(" ++ props.backgroundImageUrl ++ ")"
+    in
     Html.section
         [ Attr.class "hero is-fullwidth has-background-primary-05 has-text-centered "
-
-        -- , Attr.style "background-image" "/assets/man.webp"
-        -- , Attr.style "background-image" "url(https://picsum.photos/id/381/1920/1080)"
-        , Attr.style "background-image" "url(https://www.munich.travel/var/ger_muc/storage/images/_aliases/stage_large/3/9/5/8/78593-1-ger-DE/olympiapark-olympiaturm-75080341-500px-sanjin-kusan-3000.jpg)"
-
-        -- , Attr.style "background-image" "url(https://plus.unsplash.com/premium_photo-1661963646444-ea17cd77c212?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
-        -- , Attr.style "background-image" "url(https://images.pexels.com/photos/2127024/pexels-photo-2127024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)"
+        , Attr.style "background-image" url
         , Attr.style "background-repeat" "no-repeat"
-        , Attr.style "background-position" "bottom"
+        , Attr.style "background-position" props.position
+        , Attr.style "background-size" props.size
         ]
         [ Html.div
             [ Attr.class "hero-body"
-
-            -- , Attr.style "background-image" "https://picsum.photos/id/381/1920/1080"
             ]
-            [ profilePicview model
+            [ profilePicview props route
             ]
         ]
 
 
-profilePicview : Model -> Html Msg
-profilePicview model =
+profilePicview : Props -> Route () -> Html Msg
+profilePicview props route =
     Html.section [ Attr.class "section" ]
         [ Html.div [ Attr.class "content is-mobile is-centered" ]
-            [ Html.div [ Attr.class "is-half has-text-centered" ]
-                [ Html.figure [ Attr.class "image is-inline-block mb-0 mt-3" ]
+            [ Html.div
+                [ Attr.class "is-half has-text-centered"
+                , Attr.hidden
+                    (route.path
+                        /= Route.Path.Home_
+                    )
+                ]
+                [ Html.figure
+                    [ Attr.class "image is-inline-block mb-0 mt-3"
+                    ]
                     [ Html.img
                         [ Attr.class "is-rounded is-128x128"
-                        , Attr.src "./assets/man.webp"
+                        , Attr.src "./assets/meSmall.png"
                         ]
                         []
                     ]
-                , Html.p [ Attr.class "is-size-2 has-text-white" ] [ Html.text "Santhosh K S" ]
-                , Html.p [ Attr.class "is-size-4 " ] [ Html.text "Seasoned professional" ]
-                , Html.p [ Attr.class "has-text-white" ] [ Html.text "C,C++,Matlab,Python,Go,Swift,Embedded systems,Fullstack developer" ]
-                , iconsListView model
+                , Html.p [ Attr.class "title" ] [ Html.text "Santhosh K S" ]
+                , Html.p [ Attr.class "subtitle" ] [ Html.text "Seasoned professional" ]
+                , Html.p [ Attr.class "has-text-white" ] [ Html.text "C,C++,Python,Go,Swift,Matlab,Embedded systems,Fullstack developer" ]
+                , iconsListView props
                 ]
             ]
         ]
 
 
-iconsListView : Model -> Html Msg
-iconsListView model =
+iconsListView : Props -> Html Msg
+iconsListView props =
     Html.div []
         [ Html.ul [ Attr.class "icons ml-0" ]
             [ Html.li [ Attr.class "is-inline is-size-4" ]
@@ -164,7 +177,9 @@ iconsListView model =
                 ]
             , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
                 [ Html.a
-                    [ Attr.href "#github"
+                    [ Attr.href "https://github.com/Santhosh-KS"
+
+                    -- Attr.href "#github"
                     ]
                     [ Html.i
                         [ Attr.class "fab fa-github has-text-white"
@@ -174,7 +189,7 @@ iconsListView model =
                 ]
             , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
                 [ Html.a
-                    [ Attr.href "#linkedin"
+                    [ Attr.href "https://www.linkedin.com/in/santhosh-k-s-07542623/"
                     , Attr.class "fab fa-linkedin has-text-white"
                     ]
                     []

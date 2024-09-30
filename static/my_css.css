@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Poppins|Kaushan+Script")
+
+
+.hero .title {
+  font-family: 'Kaushan Script', sans-serif;
+  transform: rotate(-5deg);
+  font-size: 5rem;
+  color: whitesmoke;
+}

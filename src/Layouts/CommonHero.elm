@@ -1,8 +1,10 @@
 module Layouts.CommonHero exposing (Model, Msg, Props, layout)
 
+import Dict
 import Effect exposing (Effect)
 import Html exposing (Html)
 import Html.Attributes as Attr
+import Html.Events
 import Layout exposing (Layout)
 import Route exposing (Route)
 import Route.Path
@@ -14,10 +16,8 @@ type alias Props =
     { backgroundImageUrl : String
     , position : String
     , size : String
-
-    {- , title : String
-       , subtitle: String
-    -}
+    , title : String
+    , subtitle : String
     }
 
 
@@ -51,15 +51,19 @@ init _ =
 
 
 type Msg
-    = NoOp
+    = HomeButtonClicked
 
 
 update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
-        NoOp ->
+        HomeButtonClicked ->
             ( model
-            , Effect.none
+            , Effect.pushRoute
+                { path = Route.Path.Home_
+                , query = Dict.empty
+                , hash = Nothing
+                }
             )
 
 
@@ -110,6 +114,44 @@ view props route { toContentMsg, model, content } =
     }
 
 
+navBarBurger : Html Msg
+navBarBurger =
+    Html.div [ Attr.class "navbar-burger burger" ]
+        [ Html.span [] []
+        , Html.span [] []
+        , Html.span [] []
+        , Html.span [] []
+        ]
+
+
+navBar : Html Msg
+navBar =
+    Html.div [ Attr.class "navbar" ]
+        [ Html.div [ Attr.class "container" ]
+            [ navBarBurger
+            , navBarEnd
+            ]
+        ]
+
+
+navBarEnd : Html Msg
+navBarEnd =
+    Html.div [ Attr.class "navbar-end" ]
+        [ Html.div
+            [ Attr.class "navbar-item is-active"
+            ]
+            [ Html.a [] [ Html.text "Home" ] ]
+        ]
+
+
+heroBodyTitleAndSubtitle : Props -> Route () -> Html Msg
+heroBodyTitleAndSubtitle props route =
+    Html.div [ Attr.hidden (route.path == Route.Path.Home_) ]
+        [ Html.div [ Attr.class "title is-size-1", Attr.id "fancy" ] [ Html.text props.title ]
+        , Html.div [ Attr.class "subtitle is-size-5 ", Attr.id "fancysubtitle" ] [ Html.text props.subtitle ]
+        ]
+
+
 hero : Props -> Route () -> Html Msg
 hero props route =
     let
@@ -128,8 +170,32 @@ hero props route =
             [ Attr.class "hero-body"
             ]
             [ profilePicview props route
+            , heroBodyTitleAndSubtitle props route
             ]
+        , Html.div
+            [ Attr.hidden
+                (route.path
+                    == Route.Path.Home_
+                )
+            ]
+            [ homeButton { icon = "fa-solid fa-house" } ]
         ]
+
+
+programmingList : List String
+programmingList =
+    [ "C"
+    , "C++"
+    , "Python"
+    , "Go"
+    , "Swift"
+    , "Matlab"
+    , "Elm"
+    , "Javascript"
+    , "Fullstack"
+    , "PostgreSQL"
+    , "Functional programming"
+    ]
 
 
 profilePicview : Props -> Route () -> Html Msg
@@ -154,7 +220,8 @@ profilePicview props route =
                     ]
                 , Html.p [ Attr.class "title is-size-2", Attr.id "fancy" ] [ Html.text "Santhosh K S" ]
                 , Html.p [ Attr.class "subtitle" ] [ Html.text "Seasoned professional" ]
-                , Html.p [ Attr.class "has-text-white" ] [ Html.text "C,C++,Python,Go,Swift,Matlab,Embedded systems,Fullstack developer" ]
+                , Html.p [ Attr.class "has-text-white" ]
+                    (nonClickableButtons programmingList)
                 , iconsListView props
                 ]
             ]
@@ -200,6 +267,27 @@ iconsListView props =
                 ]
             ]
         ]
+
+
+homeButton : { icon : String } -> Html Msg
+homeButton props =
+    Html.a
+        [ Attr.class "button is-text is-large is-fullwidth  is-radiusless"
+        , Html.Events.onClick HomeButtonClicked
+        ]
+        [ Html.i [ Attr.class props.icon ] [] ]
+
+
+ncb : String -> Html Msg
+ncb v =
+    Html.div
+        [ Attr.class "button is-small" ]
+        [ Html.text v ]
+
+
+nonClickableButtons : List String -> List (Html Msg)
+nonClickableButtons vals =
+    List.map ncb vals
 
 
 viewMainContent : { title : String, content : View msg } -> Html msg

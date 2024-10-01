@@ -5,6 +5,7 @@ import Html
 import Layouts
 import Page exposing (Page)
 import Route exposing (Route)
+import Route.Path exposing (Path(..))
 import Shared
 import View exposing (View)
 
@@ -26,6 +27,8 @@ layout model =
         { backgroundImageUrl = "https://images.unsplash.com/photo-1693823462803-8921d3f5ea2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         , position = "center"
         , size = "100%"
+        , title = "Techkunstler"
+        , subtitle = "Road less travelled.."
         }
 
 

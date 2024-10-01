@@ -8,6 +8,12 @@
   color: whitesmoke;
 }
 
+.hero #fancysubtitle {
+  font-family: 'Kaushan Script', sans-serif;
+  transform: rotate(-5deg);
+  font-size: 3rem;
+  color: whitesmoke;
+}
 /* contactus */
 .social-media {
   margin-top: 30px;

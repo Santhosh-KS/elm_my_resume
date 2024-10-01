@@ -5,6 +5,7 @@ import Html
 import Layouts
 import Page exposing (Page)
 import Route exposing (Route)
+import Route.Path exposing (Path(..))
 import Shared
 import View exposing (View)
 
@@ -23,9 +24,11 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        { backgroundImageUrl = "https://cdn.pixabay.com/photo/2021/05/06/12/39/hexagon-6233333_1280.jpg"
+        { backgroundImageUrl = ""
         , position = "center"
         , size = "100%"
+        , title = "Geometricalgebra"
+        , subtitle = "Functional programming for N-Dimensions.."
         }
 
 

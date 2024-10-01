@@ -26,6 +26,8 @@ layout model =
         { backgroundImageUrl = "https://developer.apple.com/swift/images/swift-logo.svg"
         , position = "right 1% bottom 2%"
         , size = "5%"
+        , title = "Swift"
+        , subtitle = "Little Bird has arrived.."
         }
 
 

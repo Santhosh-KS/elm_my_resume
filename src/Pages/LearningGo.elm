@@ -28,6 +28,8 @@ layout model =
         -- , position = "right 1% bottom 2%"
         , position = "center"
         , size = "60%"
+        , title = "Go"
+        , subtitle = "Lets Go!"
         }
 
 

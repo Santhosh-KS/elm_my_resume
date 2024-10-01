@@ -20,6 +20,7 @@
         { "rel": "stylesheet", "href": "https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" }
        ,{ "rel": "stylesheet", "href": "https://use.fontawesome.com/releases/v6.2.1/css/all.css" }
        ,{ "rel": "stylesheet", "href": "/bulma-timeline.min.css" }
+       ,{ "rel": "stylesheet", "href": "/bulma-tagsinput.min.css" }
        ,{ "rel": "stylesheet", "href": "/my_css.css" }
       ],
       "script": []

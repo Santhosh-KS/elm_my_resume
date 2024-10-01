@@ -23,9 +23,11 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        { backgroundImageUrl = "https://cdn-media-1.freecodecamp.org/images/1*QDF5FSC7IE8GxFd-Y5DbrQ.jpeg"
+        { backgroundImageUrl = ""
         , position = "right bottom"
         , size = "10%"
+        , title = "Functional Programming"
+        , subtitle = "Everything is a function.."
         }
 
 

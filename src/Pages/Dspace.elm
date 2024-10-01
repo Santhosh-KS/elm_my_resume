@@ -26,6 +26,8 @@ layout model =
         { backgroundImageUrl = "https://www.dspace.com/_clickr/cfml/index.cfm?src=../../../../../files/jpg27/flat-header_hella_1920x1080px_240717.jpg&width=1920&fallback"
         , position = "center"
         , size = "100%"
+        , title = "Dspace"
+        , subtitle = "Lets simulate scenarios!"
         }
 
 

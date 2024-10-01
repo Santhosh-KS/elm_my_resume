@@ -38,6 +38,8 @@ layout model =
         { backgroundImageUrl = "https://picsum.photos/id/381/1920/1080"
         , position = "bottom"
         , size = "100%"
+        , title = "Home"
+        , subtitle = "Sweet home"
         }
 
 
@@ -445,7 +447,7 @@ jul2019 =
 
 
 section1 =
-    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift, and Matlab. I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications."
+    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift, and Matlab. I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications in multiple domains such as Automotive, Telecommunications etc.."
 
 
 aboutMe : Html Msg
@@ -459,7 +461,7 @@ aboutMe =
                             [ Html.text "About Me" ]
                         , Html.p [] [ Html.text section1 ]
                         , Html.a
-                            [ Attr.class "buttom is-primary is-right"
+                            [ Attr.class "buttom is-light is-right"
                             , Html.Events.onClick AboutMeButtonClicked
                             ]
                             [ Html.text "Read More.." ]
@@ -506,7 +508,7 @@ timeLineItemView props =
             , Html.p [] [ Html.text props.content.value ]
             , sideCardNotificationDetailsView props.projectDetails
             , Html.a
-                [ Attr.class "button has-background-primary-10"
+                [ Attr.class "button is-dark "
                 , Html.Events.onClick props.event
                 ]
                 [ Html.text "Read More..." ]

@@ -26,6 +26,8 @@ layout model =
         { backgroundImageUrl = "https://cdn.pixabay.com/photo/2021/11/20/05/15/car-6810885_1280.jpg"
         , position = "bottom"
         , size = "100%"
+        , title = "Drive Away Information"
+        , subtitle = "ADAS feature for distracted drivers"
         }
 
 

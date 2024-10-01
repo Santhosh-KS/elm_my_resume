@@ -1,9 +1,35 @@
-@import url("https://fonts.googleapis.com/css?family=Lato|Poppins|Kaushan+Script")
+@import url("https://fonts.googleapis.com/css?family=Lato|Poppins|Kaushan+Script");
 
 
-.hero .title {
+.hero #fancy {
   font-family: 'Kaushan Script', sans-serif;
   transform: rotate(-5deg);
   font-size: 5rem;
   color: whitesmoke;
+}
+
+/* contactus */
+.social-media {
+  margin-top: 30px;
+}
+
+.social-media a {
+  margin-right: 10px;
+}
+
+.field:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+
+  .navbar {
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .hero.is-fullheight {
+    min-height: calc(100vh - 6.5rem - 40px);
+  }
 }

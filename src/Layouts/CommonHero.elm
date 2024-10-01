@@ -14,6 +14,10 @@ type alias Props =
     { backgroundImageUrl : String
     , position : String
     , size : String
+
+    {- , title : String
+       , subtitle: String
+    -}
     }
 
 
@@ -148,7 +152,7 @@ profilePicview props route =
                         ]
                         []
                     ]
-                , Html.p [ Attr.class "title" ] [ Html.text "Santhosh K S" ]
+                , Html.p [ Attr.class "title is-size-2", Attr.id "fancy" ] [ Html.text "Santhosh K S" ]
                 , Html.p [ Attr.class "subtitle" ] [ Html.text "Seasoned professional" ]
                 , Html.p [ Attr.class "has-text-white" ] [ Html.text "C,C++,Python,Go,Swift,Matlab,Embedded systems,Fullstack developer" ]
                 , iconsListView props

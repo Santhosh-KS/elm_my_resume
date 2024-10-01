@@ -24,9 +24,9 @@ page shared route =
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
-        { backgroundImageUrl = "https://as1.ftcdn.net/v2/jpg/09/40/49/92/1000_F_940499266_8XQs7Et3IfuniMtv2Nwnp3Ofab1qvtsI.jpg"
+        { backgroundImageUrl = "https://picsum.photos/id/381/1920/1080"
         , position = "center"
-        , size = "30%"
+        , size = "100%"
         }
 
 

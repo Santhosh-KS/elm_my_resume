@@ -214,7 +214,7 @@ profilePicview props route =
                     ]
                     [ Html.img
                         [ Attr.class "is-rounded is-128x128"
-                        , Attr.src "./assets/meSmall.png"
+                        , Attr.src "/meSmall.png"
                         ]
                         []
                     ]

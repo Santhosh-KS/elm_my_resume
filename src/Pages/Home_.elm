@@ -459,7 +459,7 @@ aboutMe =
                     [ Html.div [ Attr.class "content" ]
                         [ Html.div [ Attr.class "title has-text-centered" ]
                             [ Html.text "About Me" ]
-                        , Html.p [] [ Html.text section1 ]
+                        , Html.p [ Attr.class "is-size-4" ] [ Html.text section1 ]
                         , Html.a
                             [ Attr.class "buttom is-light is-right"
                             , Html.Events.onClick AboutMeButtonClicked

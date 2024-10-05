@@ -231,22 +231,22 @@ profilePicview props route =
 iconsListView : Props -> Html Msg
 iconsListView props =
     Html.div []
-        [ Html.ul [ Attr.class "icons ml-0" ]
-            [ Html.li [ Attr.class "is-inline is-size-4" ]
+        [ Html.ul [ Attr.class "icons" ]
+            [ Html.li [ Attr.class "is-inline is-size-3 m-3" ]
                 [ Html.a
                     [ Attr.href "#contact"
                     , Attr.class "fa-solid fa-envelope has-text-white "
                     ]
                     []
                 ]
-            , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
+            , Html.li [ Attr.class "is-inline is-size-3 m-3" ]
                 [ Html.a
                     [ Attr.href "#mobile"
                     , Attr.class "fas fa-mobile has-text-white"
                     ]
                     []
                 ]
-            , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
+            , Html.li [ Attr.class "is-inline is-size-3 m-1" ]
                 [ Html.a
                     [ Attr.href "https://github.com/Santhosh-KS"
 
@@ -258,7 +258,7 @@ iconsListView props =
                         []
                     ]
                 ]
-            , Html.li [ Attr.class "is-inline is-size-4 ml-3" ]
+            , Html.li [ Attr.class "is-inline is-size-3 m-1" ]
                 [ Html.a
                     [ Attr.href "https://www.linkedin.com/in/santhosh-k-s-07542623/"
                     , Attr.class "fab fa-linkedin has-text-white"

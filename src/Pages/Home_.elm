@@ -68,6 +68,8 @@ type Msg
     | SwiftBeginsUpskillReadMoreClicked
     | FunctionalProgrammingUpskillReadMoreClicked
     | GeometricAlgebraUpskillReadMoreClicked
+    | MachineLearningUpskillReadMoreClicked
+    | ComputerVisionAndAIUpskillReadMoreClicked
     | ReactAndElmUpskillReadMoreClicked
     | GoAndElmUpskillReadMoreClicked
     | Jan2023ToMay2024ReadMoreClicked
@@ -77,6 +79,9 @@ type Msg
     | May2024ReadMoreClicked
     | June2024ReadMoreClicked
     | AboutMeButtonClicked
+    | Jan2017ToMar2019ReadMoreClicked
+    | June2011ToMay2016ReadMoreClicked
+    | Sept2008ToMay2011ReadMoreClicked
 
 
 update : Msg -> Model -> ( Model, Effect Msg )
@@ -200,6 +205,31 @@ update msg model =
                 }
             )
 
+        Jan2017ToMar2019ReadMoreClicked ->
+            ( model
+            , Effect.none
+            )
+
+        MachineLearningUpskillReadMoreClicked ->
+            ( model
+            , Effect.none
+            )
+
+        ComputerVisionAndAIUpskillReadMoreClicked ->
+            ( model
+            , Effect.none
+            )
+
+        June2011ToMay2016ReadMoreClicked ->
+            ( model
+            , Effect.none
+            )
+
+        Sept2008ToMay2011ReadMoreClicked ->
+            ( model
+            , Effect.none
+            )
+
 
 
 -- SUBSCRIPTIONS
@@ -223,6 +253,7 @@ view model =
         , Html.div [ Attr.style "border-top" "10px solid turquoise" ] []
         , timelineView model
         , Html.div [ Attr.style "border-top" "10px solid turquoise" ] []
+        , footer model
         ]
     }
 
@@ -371,6 +402,69 @@ jan2023ToMay2024 =
     }
 
 
+jan2017ToMar2019 : ItemContent
+jan2017ToMar2019 =
+    { content = { key = "Jan 2017 To Mar 2019", value = "Principal Engineer at Anovadata" }
+    , icon = { icon = "fa-solid fa-handshake-angle" }
+    , projectDetails =
+        [ { key = "Role", value = "Principal Engineer" }
+        , { key = "Project", value = "DPDK based network monitoring platform development" }
+        , { key = "Client", value = " Anovadata / Ribbon Communication" }
+        , { key = "Location", value = "Bengaluru, India" }
+        , { key = "Domain", value = "Telecom and Networking" }
+        , { key = "Technologies", value = "C++, python, shell scripting, DPDK" }
+        , { key = "Tools", value = "Confluence, JIRA, Github, CI-CD, Jenkins" }
+
+        {- , { key = "TeamName", value = "Vikings" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+        -}
+        ]
+    , event = Jan2017ToMar2019ReadMoreClicked
+    }
+
+
+june2011ToMay2016 : ItemContent
+june2011ToMay2016 =
+    { content = { key = "June 2011 To May 2016", value = "Senior Software Engineer at Motorola" }
+    , icon = { icon = "fa-solid fa-handshake-angle" }
+    , projectDetails =
+        [ { key = "Role", value = "Senior Software Engineer" }
+        , { key = "Project", value = "Set top box and Cable modem features development" }
+        , { key = "Client", value = "Verizon" }
+        , { key = "Location", value = "Bengaluru, India" }
+        , { key = "Domain", value = "Embedded systems and Networking" }
+        , { key = "Technologies", value = "C, C++, python, shell scripting" }
+        , { key = "Tools", value = "JIRA, svn, CI-CD, Jenkins" }
+
+        {- , { key = "TeamName", value = "Vikings" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+        -}
+        ]
+    , event = June2011ToMay2016ReadMoreClicked
+    }
+
+
+sept2008ToMay2011 : ItemContent
+sept2008ToMay2011 =
+    { content = { key = "Sept 2008 To May 2011", value = "Senior Software Engineer at Mindtree" }
+    , icon = { icon = "fa-solid fa-handshake-angle" }
+    , projectDetails =
+        [ { key = "Role", value = "Senior Software Engineer" }
+        , { key = "Project", value = "Set top box Conditional access features development" }
+        , { key = "Client", value = "Dish TV" }
+        , { key = "Location", value = "Chennai/Bengaluru, India" }
+        , { key = "Domain", value = "Embedded systems" }
+        , { key = "Technologies", value = "C, python, shell scripting" }
+        , { key = "Tools", value = "JIRA, svn, CI-CD, Jenkins, Conax Conditional Access" }
+
+        {- , { key = "TeamName", value = "Vikings" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+        -}
+        ]
+    , event = Sept2008ToMay2011ReadMoreClicked
+    }
+
+
 
 {- { content = { key = "", value = "" }
    , icon = { icon = "" }
@@ -434,6 +528,28 @@ swiftBegins =
     }
 
 
+machineLearning : ItemContent
+machineLearning =
+    { content = { key = "Machine Learning", value = "Upskill" }
+    , icon = { icon = " fa-solid fa-book" }
+    , projectDetails =
+        [ { key = "Learn", value = "Started learning about ML and AI" }
+        ]
+    , event = MachineLearningUpskillReadMoreClicked
+    }
+
+
+computerVisionAndAI : ItemContent
+computerVisionAndAI =
+    { content = { key = "Computer vision and AI", value = "Upskill" }
+    , icon = { icon = " fa-solid fa-book" }
+    , projectDetails =
+        [ { key = "Learn", value = "Started learning Computer vision and AI" }
+        ]
+    , event = MachineLearningUpskillReadMoreClicked
+    }
+
+
 jul2019 : ItemContent
 jul2019 =
     { content = { key = "July 2019", value = "Moved to Munich Germany." }
@@ -443,6 +559,19 @@ jul2019 =
         , { key = "Location", value = "Munich, Germany" }
         ]
     , event = July2019ReadMoreClicked
+    }
+
+
+graduation : ItemContent
+graduation =
+    { content = { key = "July 2008", value = "Graduated with a degree in Telecommunications Engineering from VTU, Belgaum, Karnataka, India" }
+    , icon = { icon = " fa-solid fa-graduation-cap" }
+    , projectDetails =
+        [ { key = "Graduation", value = "Successfuly completed my graduation at BIT." }
+        , { key = "Collage", value = "Bangalore Institute of Technology" }
+        , { key = "Location", value = "Bengaluru, India" }
+        ]
+    , event = NoOp
     }
 
 
@@ -475,10 +604,11 @@ aboutMe =
 timelineView : Model -> Html Msg
 timelineView model =
     Html.div [ Attr.class "timeline is-centered" ]
-        [ Html.header [ Attr.class "timeline-header is-centered" ]
-            [-- Html.span [ Attr.class "tag is-medium is-primary is-centered" ] [ Html.text "Start" ]
-            ]
-        , timeLineItemView june2024
+        [ {- Html.header [ Attr.class "timeline-header is-centered" ]
+             [ Html.span [ Attr.class "tag is-medium is-primary is-centered" ] [ Html.text "Start" ]
+             ]
+          -}
+          timeLineItemView june2024
         , timeLineItemView may2024
         , timeLineItemView goAndElm
         , timeLineItemView reactAndElm
@@ -490,6 +620,16 @@ timelineView model =
         , timeLineItemView swiftBegins
         , timeLineItemView july2019ToMar2020
         , timeLineItemView jul2019
+        , timeLineItemView computerVisionAndAI
+        , timeLineItemView jan2017ToMar2019
+        , timeLineItemView machineLearning
+        , timeLineItemView june2011ToMay2016
+        , timeLineItemView sept2008ToMay2011
+        , timeLineItemView graduation
+        , Html.header
+            [ Attr.class "timeline-header is-centered mb-1 pb-1" ]
+            [ Html.span [ Attr.class "tag is-medium is-warning is-centered" ] [ Html.text "Start" ]
+            ]
 
         -- , timelineNotificationInfoView { companyName = "TechKunstler", location = "Bangalore India" }
         , Html.div [ Attr.class "timeline-header" ]
@@ -503,15 +643,17 @@ timeLineItemView props =
     Html.div [ Attr.class "timeline-item" ]
         [ Html.div [ Attr.class "timeline-marker" ] []
         , timelineInfoIconView props.icon.icon --"fa-solid fa-truck-plane" --"fab fa-linkedin has-text-white"
-        , Html.div [ Attr.class "timeline-content" ]
+        , Html.div [ Attr.class "timeline-content has-text-white" ]
             [ Html.p [ Attr.class "heading" ] [ Html.text props.content.key ]
             , Html.p [] [ Html.text props.content.value ]
             , sideCardNotificationDetailsView props.projectDetails
-            , Html.a
-                [ Attr.class "button is-dark "
-                , Html.Events.onClick props.event
-                ]
-                [ Html.text "Read More..." ]
+
+            {- , Html.a
+               [ Attr.class "button is-dark "
+               , Html.Events.onClick props.event
+               ]
+               [ Html.text "Read More..." ]
+            -}
             ]
         ]
 
@@ -557,9 +699,54 @@ sideCardNotificationDetailsView props =
 
 fields : { key : String, value : String } -> Html Msg
 fields props =
-    Html.div [ Attr.class "field is-horizontal" ]
+    Html.div
+        [ Attr.class "field is-horizontal"
+        ]
         [ Html.div [ Attr.class "field-label" ]
             [ labelView props.key
             ]
         , fieldBodyView props.value
+        ]
+
+
+footer : Model -> Html Msg
+footer model =
+    Html.section
+        [ Attr.class "section pt-6 mb-6"
+        , Attr.id "contact"
+        ]
+        [ Html.div [ Attr.class "columns" ]
+            [ Html.div [ Attr.class "column" ]
+                [ footerText
+                    { key = " Email"
+                    , value = "santhosh@techkunstler.com"
+                    , icon = "fa-solid fa-at"
+                    , id = "mobile"
+                    }
+                ]
+            , Html.div [ Attr.class "column is-two-fifth" ]
+                [ footerText
+                    { key = " Mobile"
+                    , value = "+91 9739317879"
+                    , icon = "fa-solid fa-phone"
+                    , id = "contact"
+                    }
+                ]
+            ]
+        ]
+
+
+footerText : { key : String, value : String, icon : String, id : String } -> Html Msg
+footerText props =
+    Html.section [ Attr.class "section" ]
+        [ Html.div
+            [ Attr.class "field is-inline"
+            , Attr.id props.id
+            ]
+            [ Html.label [ Attr.class (props.icon ++ " label has-text-white") ]
+                [ Html.text props.key ]
+            , Html.div [ Attr.class "has-text-white icons" ]
+                [ Html.p [ Attr.class "is-size-3" ] [ Html.text props.value ]
+                ]
+            ]
         ]

@@ -27,7 +27,7 @@ layout model =
         { backgroundImageUrl = "https://picsum.photos/id/381/1920/1080"
         , position = "center"
         , size = "100%"
-        , title = "About me"
+        , title = "All about Santhosh"
         , subtitle = "Journey so far..."
         }
 
@@ -128,6 +128,42 @@ aboutMe =
                         , Html.p [ Attr.class "is-size-4" ] [ Html.text section6 ]
                         ]
                     ]
+                ]
+            ]
+        ]
+
+
+footer : Model -> Html Msg
+footer model =
+    Html.section
+        [ Attr.class "section pt-6 mb-6"
+        , Attr.id "contact"
+        ]
+        [ Html.div [ Attr.class "columns" ]
+            [ Html.div [ Attr.class "column" ]
+                [ footerText
+                    { key = "Email"
+                    , value = "santhosh@techkunstler.com"
+                    , icon = "fa-solid fa-at"
+                    }
+                , footerText
+                    { key = "Mobile"
+                    , value = "+91 9739317879"
+                    , icon = "fa-solid fa-phone"
+                    }
+                ]
+            ]
+        ]
+
+
+footerText : { key : String, value : String, icon : String } -> Html Msg
+footerText props =
+    Html.section [ Attr.class "section" ]
+        [ Html.div [ Attr.class "field is-inline" ]
+            [ Html.label [ Attr.class (props.icon ++ " label has-text-white") ]
+                [ Html.text props.key ]
+            , Html.div [ Attr.class "has-text-white icons" ]
+                [ Html.p [ Attr.class "is-size-3" ] [ Html.text props.value ]
                 ]
             ]
         ]

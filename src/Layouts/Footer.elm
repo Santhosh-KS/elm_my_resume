@@ -109,11 +109,5 @@ footer props =
 viewMainContent : { title : String, content : View msg } -> Html msg
 viewMainContent { title, content } =
     Html.main_ [ Attr.class "is-flex is-flex-direction-column is-flex-grow-1" ]
-        [ {- Html.section [ Attr.class "hero is-info" ]
-             [ Html.div [ Attr.class "hero-body" ]
-                 [ Html.h1 [ Attr.class "title" ] [ Html.text title ]
-                 ]
-             ]
-          -}
-          Html.div [ Attr.class "p-4" ] content.body
+        [ Html.div [ Attr.class "p-4" ] content.body
         ]

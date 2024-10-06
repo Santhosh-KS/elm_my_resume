@@ -294,6 +294,7 @@ type alias ItemContent =
     , icon : Icon
     , projectDetails : List KeyValPair
     , event : Msg
+    , logo : String
     }
 
 
@@ -307,6 +308,7 @@ june2024 =
         , { key = "Location", value = "Bengaluru, Karnataka, India" }
         ]
     , event = June2024ReadMoreClicked
+    , logo = "bengaluru.jpeg"
     }
 
 
@@ -316,6 +318,7 @@ may2024 =
     , icon = { icon = "fa-solid fa-pen-nib" }
     , projectDetails = [ { key = "Role", value = "Senior Solution Architecht" } ]
     , event = May2024ReadMoreClicked
+    , logo = "kpit.png"
     }
 
 
@@ -336,6 +339,7 @@ july2019ToMar2020 =
         -}
         ]
     , event = July2019ToMar2020ReadMoreClicked
+    , logo = "bmw.jpeg"
     }
 
 
@@ -357,6 +361,7 @@ may2020ToMar2021 =
         -}
         ]
     , event = May2020ToMar2021ReadMoreClicked
+    , logo = "volvo.png"
     }
 
 
@@ -378,6 +383,7 @@ april2021ToDec2022 =
         -}
         ]
     , event = April2021ToDec2022ReadMoreClicked
+    , logo = "dspace.svg"
     }
 
 
@@ -399,6 +405,7 @@ jan2023ToMay2024 =
         -}
         ]
     , event = Jan2023ToMay2024ReadMoreClicked
+    , logo = "qualcomm.png"
     }
 
 
@@ -420,6 +427,7 @@ jan2017ToMar2019 =
         -}
         ]
     , event = Jan2017ToMar2019ReadMoreClicked
+    , logo = "ribbon.svg"
     }
 
 
@@ -441,6 +449,7 @@ june2011ToMay2016 =
         -}
         ]
     , event = June2011ToMay2016ReadMoreClicked
+    , logo = "motorola.jpeg"
     }
 
 
@@ -462,6 +471,7 @@ sept2008ToMay2011 =
         -}
         ]
     , event = Sept2008ToMay2011ReadMoreClicked
+    , logo = "mindtree.jpeg"
     }
 
 
@@ -481,6 +491,7 @@ goAndElm =
         [ { key = "Learn", value = "Started building full stack applications using go and Elm" }
         ]
     , event = GoAndElmUpskillReadMoreClicked
+    , logo = ""
     }
 
 
@@ -492,6 +503,7 @@ reactAndElm =
         [ { key = "Learn", value = "Started building React Native applications and Elm Applications" }
         ]
     , event = ReactAndElmUpskillReadMoreClicked
+    , logo = ""
     }
 
 
@@ -503,6 +515,7 @@ geometricAlgebra =
         [ { key = "Learn", value = "Started learning about 3D graphics using Geometric Algebra" }
         ]
     , event = GeometricAlgebraUpskillReadMoreClicked
+    , logo = ""
     }
 
 
@@ -514,6 +527,7 @@ functionalProgramming =
         [ { key = "Learn", value = "Started learning about Functional Programming" }
         ]
     , event = FunctionalProgrammingUpskillReadMoreClicked
+    , logo = ""
     }
 
 
@@ -525,6 +539,7 @@ swiftBegins =
         [ { key = "Learn", value = "Started learning about Swift programming language" }
         ]
     , event = SwiftBeginsUpskillReadMoreClicked
+    , logo = ""
     }
 
 
@@ -536,6 +551,7 @@ machineLearning =
         [ { key = "Learn", value = "Started learning about ML and AI" }
         ]
     , event = MachineLearningUpskillReadMoreClicked
+    , logo = ""
     }
 
 
@@ -547,6 +563,7 @@ computerVisionAndAI =
         [ { key = "Learn", value = "Started learning Computer vision and AI" }
         ]
     , event = MachineLearningUpskillReadMoreClicked
+    , logo = ""
     }
 
 
@@ -559,6 +576,7 @@ jul2019 =
         , { key = "Location", value = "Munich, Germany" }
         ]
     , event = July2019ReadMoreClicked
+    , logo = ""
     }
 
 
@@ -573,6 +591,7 @@ graduation =
         , { key = "Location", value = "Bengaluru, India" }
         ]
     , event = NoOp
+    , logo = "BIT.jpeg"
     }
 
 
@@ -587,6 +606,7 @@ opencvAward =
         , { key = "Location", value = "Bengaluru, India" }
         ]
     , event = NoOp
+    , logo = ""
     }
 
 
@@ -660,7 +680,16 @@ timeLineItemView props =
         [ Html.div [ Attr.class "timeline-marker" ] []
         , timelineInfoIconView props.icon.icon --"fa-solid fa-truck-plane" --"fab fa-linkedin has-text-white"
         , Html.div [ Attr.class "timeline-content has-text-white" ]
-            [ Html.p [ Attr.class "heading" ] [ Html.text props.content.key ]
+            [ Html.span
+                [ Attr.hidden (String.isEmpty props.logo)
+                ]
+                [ Html.img
+                    [ Attr.class "image is-rounded is-48x48 is-rounded"
+                    , Attr.src ("/" ++ props.logo)
+                    ]
+                    []
+                ]
+            , Html.p [ Attr.class "heading" ] [ Html.text props.content.key ]
             , Html.p [] [ Html.text props.content.value ]
             , sideCardNotificationDetailsView props.projectDetails
 

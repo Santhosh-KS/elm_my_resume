@@ -258,7 +258,7 @@ iconsListView props =
                         []
                     ]
                 ]
-            , Html.li [ Attr.class "is-inline is-size-3 m-1" ]
+            , Html.li [ Attr.class "is-inline is-size-2 m-1" ]
                 [ Html.a
                     [ Attr.href "https://www.linkedin.com/in/santhosh-k-s-07542623/"
                     , Attr.class "fab fa-linkedin has-text-white"

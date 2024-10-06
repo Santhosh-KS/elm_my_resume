@@ -567,8 +567,23 @@ graduation =
     { content = { key = "July 2008", value = "Graduated with a degree in Telecommunications Engineering from VTU, Belgaum, Karnataka, India" }
     , icon = { icon = " fa-solid fa-graduation-cap" }
     , projectDetails =
-        [ { key = "Graduation", value = "Successfuly completed my graduation at BIT." }
+        [ { key = "Graduation", value = "Successfuly completed my graduation." }
+        , { key = "University", value = "Visvesvaraya Technological University, Belgaum, Karnataka, India" }
         , { key = "Collage", value = "Bangalore Institute of Technology" }
+        , { key = "Location", value = "Bengaluru, India" }
+        ]
+    , event = NoOp
+    }
+
+
+opencvAward : ItemContent
+opencvAward =
+    { content = { key = "Sept 2018", value = "Won an award for the Best project in CV4Faces competition" }
+    , icon = { icon = " fa-solid fa-award" }
+    , projectDetails =
+        [ { key = "CV4Faces Contest Award", value = "Won 2nd prize" }
+        , { key = "OpenCV", value = "Won 2nd place in an international competition where more than 200 teams were competing." }
+        , { key = "Learnings", value = "OpenCV, AI and ML" }
         , { key = "Location", value = "Bengaluru, India" }
         ]
     , event = NoOp
@@ -620,6 +635,7 @@ timelineView model =
         , timeLineItemView swiftBegins
         , timeLineItemView july2019ToMar2020
         , timeLineItemView jul2019
+        , timeLineItemView opencvAward
         , timeLineItemView computerVisionAndAI
         , timeLineItemView jan2017ToMar2019
         , timeLineItemView machineLearning

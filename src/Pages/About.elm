@@ -4,6 +4,7 @@ import Effect exposing (Effect)
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Layouts
+import Layouts.Footer
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
@@ -21,6 +22,10 @@ page shared route =
         |> Page.withLayout layout
 
 
+
+-- |> Page.withLayout footerCommon
+
+
 layout : Shared.Model -> Layouts.Layout Msg
 layout model =
     Layouts.CommonHero
@@ -30,6 +35,12 @@ layout model =
         , title = "All about Santhosh"
         , subtitle = "Journey so far..."
         }
+
+
+footerCommon : Shared.Model -> Layouts.Layout Msg
+footerCommon model =
+    Layouts.Footer
+        {}
 
 
 

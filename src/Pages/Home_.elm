@@ -383,7 +383,7 @@ april2021ToDec2022 =
         -}
         ]
     , event = April2021ToDec2022ReadMoreClicked
-    , logo = "dspace.svg"
+    , logo = "qualcomm.png"
     }
 
 
@@ -576,7 +576,7 @@ jul2019 =
         , { key = "Location", value = "Munich, Germany" }
         ]
     , event = July2019ReadMoreClicked
-    , logo = ""
+    , logo = "munich.png"
     }
 
 

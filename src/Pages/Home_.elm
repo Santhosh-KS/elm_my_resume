@@ -325,7 +325,7 @@ may2024 =
 joinedKPIT : ItemContent
 joinedKPIT =
     { content = { key = "July2019: Joined KPIT GmbH", value = "Solution Architecht" }
-    , icon = { icon = "fa-solid fa-pen-nib" }
+    , icon = { icon = "fa-solid fa-handshake-angle" }
     , projectDetails = [ { key = "Role", value = "Started working as Solution Architecht" } ]
     , event = NoOp
     , logo = "kpit.png"
@@ -704,8 +704,8 @@ timeLineItemView props =
                         []
                     ]
                 ]
-            , Html.p [ Attr.class "heading mt-5" ] [ Html.text props.content.key ]
-            , Html.p [] [ Html.text props.content.value ]
+            , Html.p [ Attr.class "heading mt-5 is-size-5" ] [ Html.text props.content.key ]
+            , Html.p [ Attr.class "is-size-6" ] [ Html.text props.content.value ]
             , sideCardNotificationDetailsView props.projectDetails
 
             {- , Html.a
@@ -753,7 +753,7 @@ fieldBodyView v =
 
 sideCardNotificationDetailsView : List KeyValPair -> Html Msg
 sideCardNotificationDetailsView props =
-    Html.div [ Attr.class "notification " ]
+    Html.div [ Attr.class "notification is-size-7" ]
         (List.map fields props)
 
 

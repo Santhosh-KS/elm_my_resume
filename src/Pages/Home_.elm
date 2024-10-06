@@ -322,6 +322,16 @@ may2024 =
     }
 
 
+joinedKPIT : ItemContent
+joinedKPIT =
+    { content = { key = "July2019: Joined KPIT GmbH", value = "Solution Architecht" }
+    , icon = { icon = "fa-solid fa-pen-nib" }
+    , projectDetails = [ { key = "Role", value = "Started working as Solution Architecht" } ]
+    , event = NoOp
+    , logo = "kpit.png"
+    }
+
+
 july2019ToMar2020 : ItemContent
 july2019ToMar2020 =
     { content = { key = "Juy 2019 to Mar 2020 ", value = "Started leading a team of 8 people as C++ developer and Bridge head." }
@@ -654,6 +664,7 @@ timelineView model =
         , timeLineItemView may2020ToMar2021
         , timeLineItemView swiftBegins
         , timeLineItemView july2019ToMar2020
+        , timeLineItemView joinedKPIT
         , timeLineItemView jul2019
         , timeLineItemView opencvAward
         , timeLineItemView computerVisionAndAI

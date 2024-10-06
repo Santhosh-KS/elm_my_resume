@@ -680,16 +680,20 @@ timeLineItemView props =
         [ Html.div [ Attr.class "timeline-marker" ] []
         , timelineInfoIconView props.icon.icon --"fa-solid fa-truck-plane" --"fab fa-linkedin has-text-white"
         , Html.div [ Attr.class "timeline-content has-text-white" ]
-            [ Html.span
+            [ Html.div
                 [ Attr.hidden (String.isEmpty props.logo)
                 ]
-                [ Html.img
-                    [ Attr.class "image is-rounded is-48x48 is-rounded"
-                    , Attr.src ("/" ++ props.logo)
+                [ Html.figure
+                    [ Attr.class "image is-48x48"
                     ]
-                    []
+                    [ Html.img
+                        [ -- Attr.class "is-rounded 48"k
+                          Attr.src ("/" ++ props.logo)
+                        ]
+                        []
+                    ]
                 ]
-            , Html.p [ Attr.class "heading" ] [ Html.text props.content.key ]
+            , Html.p [ Attr.class "heading mt-5" ] [ Html.text props.content.key ]
             , Html.p [] [ Html.text props.content.value ]
             , sideCardNotificationDetailsView props.projectDetails
 

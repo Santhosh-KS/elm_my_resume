@@ -314,9 +314,9 @@ june2024 =
 
 may2024 : ItemContent
 may2024 =
-    { content = { key = "May 2024 : Munich Germany", value = "Completed 5 years at KPIT Gmbh Munich as Senior Solution Architect" }
+    { content = { key = "May 2024 : 5 years @KPIT", value = "Completed 5 years at KPIT Gmbh Munich as Senior Solution Architect" }
     , icon = { icon = "fa-solid fa-pen-nib" }
-    , projectDetails = [ { key = "Role", value = "Senior Solution Architecht" } ]
+    , projectDetails = [ { key = "Role", value = "Senior Solution Architect" } ]
     , event = May2024ReadMoreClicked
     , logo = "kpit.png"
     }
@@ -324,9 +324,9 @@ may2024 =
 
 joinedKPIT : ItemContent
 joinedKPIT =
-    { content = { key = "July2019: Joined KPIT GmbH", value = "Solution Architecht" }
+    { content = { key = "July2019: Joined KPIT GmbH", value = "Solution Architect" }
     , icon = { icon = "fa-solid fa-handshake-angle" }
-    , projectDetails = [ { key = "Role", value = "Started working as Solution Architecht" } ]
+    , projectDetails = [ { key = "Role", value = "Started working as Solution Architect" } ]
     , event = NoOp
     , logo = "kpit.png"
     }
@@ -582,7 +582,7 @@ jul2019 =
     { content = { key = "July 2019", value = "Moved to Munich Germany." }
     , icon = { icon = " fa-solid fa-plane-arrival" }
     , projectDetails =
-        [ { key = "NewJob", value = "Solution Architecht @KPIT GmbH" }
+        [ { key = "NewJob", value = "Solution Architect @KPIT GmbH" }
         , { key = "Location", value = "Munich, Germany" }
         ]
     , event = July2019ReadMoreClicked

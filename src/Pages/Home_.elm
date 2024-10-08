@@ -806,7 +806,7 @@ footerText props =
             [ Html.label [ Attr.class (props.icon ++ " label has-text-white") ]
                 [ Html.text props.key ]
             , Html.div [ Attr.class "has-text-white icons" ]
-                [ Html.p [ Attr.class "is-size-3" ] [ Html.text props.value ]
+                [ Html.p [ Attr.class "is-size-7" ] [ Html.text props.value ]
                 ]
             ]
         ]

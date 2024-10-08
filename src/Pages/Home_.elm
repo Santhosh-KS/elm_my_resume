@@ -787,7 +787,7 @@ footer model =
             , Html.div [ Attr.class "column is-two-fifth" ]
                 [ footerText
                     { key = " Mobile"
-                    , value = "+91 9739317879"
+                    , value = "+XX XXXXXXXXX78"
                     , icon = "fa-solid fa-phone"
                     , id = "contact"
                     }

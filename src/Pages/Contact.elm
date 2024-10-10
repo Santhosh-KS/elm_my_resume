@@ -66,7 +66,7 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.Contact"
+    { title = "Contact"
     , body =
         [ -- Html.text "/contact"
           contact model

@@ -20,10 +20,7 @@ page shared route =
         , view = view
         }
         |> Page.withLayout layout
-
-
-
--- |> Page.withLayout footerCommon
+        |> Page.withLayout footerCommon
 
 
 layout : Shared.Model -> Layouts.Layout Msg
@@ -90,7 +87,7 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.About"
+    { title = "About"
     , body =
         [ -- Html.text "/about"
           aboutMe
@@ -159,7 +156,7 @@ footer model =
                     }
                 , footerText
                     { key = "Mobile"
-                    , value = "+91 9739317879"
+                    , value = "+XX XXXXXXXXX8"
                     , icon = "fa-solid fa-phone"
                     }
                 ]

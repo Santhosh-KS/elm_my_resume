@@ -80,6 +80,6 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.LearningElm"
+    { title = "Learning Elm"
     , body = [ Html.text "/learningElm" ]
     }

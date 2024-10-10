@@ -78,6 +78,6 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.DaiFeatureDevelopment"
+    { title = "DAI"
     , body = [ Html.text "/daiFeatureDevelopment" ]
     }

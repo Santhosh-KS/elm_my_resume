@@ -78,6 +78,6 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.Swiftjourney"
+    { title = "Swift Journey"
     , body = [ Html.text "/swiftjourney" ]
     }

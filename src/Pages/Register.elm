@@ -66,7 +66,7 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.Register"
+    { title = "Register"
     , body =
         [ containerView model
         ]

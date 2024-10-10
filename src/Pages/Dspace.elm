@@ -78,6 +78,6 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.Dspace"
+    { title = "Dspace"
     , body = [ Html.text "/dspace" ]
     }

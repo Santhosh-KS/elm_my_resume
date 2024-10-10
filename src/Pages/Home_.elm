@@ -246,7 +246,7 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.Home_"
+    { title = "Home"
     , body =
         [ -- Html.text "/home_"
           aboutMe
@@ -338,7 +338,7 @@ july2019ToMar2020 =
     , icon = { icon = "fa-solid fa-handshake-angle" }
     , projectDetails =
         [ { key = "Role", value = "C++ Developer and Bridge head" }
-        , { key = "Project", value = "Built C++ Applications to validate the performance of the camers used in the ADAS systems" }
+        , { key = "Project", value = "Built C++ Applications to validate the performance of the cameras used in the ADAS systems" }
         , { key = "Client", value = "BMW" }
         , { key = "Location", value = "Munich Germany" }
         , { key = "Domain", value = "Automotive" }
@@ -597,7 +597,7 @@ graduation =
     , projectDetails =
         [ { key = "Graduation", value = "Successfuly completed my graduation." }
         , { key = "University", value = "Visvesvaraya Technological University, Belgaum, Karnataka, India" }
-        , { key = "Collage", value = "Bangalore Institute of Technology" }
+        , { key = "College", value = "Bangalore Institute of Technology" }
         , { key = "Location", value = "Bengaluru, India" }
         ]
     , event = NoOp

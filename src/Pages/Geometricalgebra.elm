@@ -79,6 +79,6 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.Geometricalgebra"
+    { title = "Geometric Algebra"
     , body = [ Html.text "/geometricalgebra" ]
     }

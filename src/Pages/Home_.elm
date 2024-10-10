@@ -707,13 +707,11 @@ timeLineItemView props =
             , Html.p [ Attr.class "heading mt-5 is-size-5" ] [ Html.text props.content.key ]
             , Html.p [ Attr.class "is-size-6" ] [ Html.text props.content.value ]
             , sideCardNotificationDetailsView props.projectDetails
-
-            {- , Html.a
-               [ Attr.class "button is-dark "
-               , Html.Events.onClick props.event
-               ]
-               [ Html.text "Read More..." ]
-            -}
+            , Html.a
+                [ Attr.class "button is-dark "
+                , Html.Events.onClick props.event
+                ]
+                [ Html.text "Read More..." ]
             ]
         ]
 

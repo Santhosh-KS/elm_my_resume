@@ -20,7 +20,10 @@ page shared route =
         , view = view
         }
         |> Page.withLayout layout
-        |> Page.withLayout footerCommon
+
+
+
+-- |> Page.withLayout footerCommon
 
 
 layout : Shared.Model -> Layouts.Layout Msg

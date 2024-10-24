@@ -213,8 +213,9 @@ profilePicview props route =
                     [ Attr.class "image is-inline-block mb-0 mt-3"
                     ]
                     [ Html.img
-                        [ Attr.class "is-rounded is-128x128"
+                        [ Attr.class "is-128x128"
                         , Attr.src "/meSmall.png"
+                        , Attr.style "border-radius" "46% 54% 98% 2% / 66% 49% 51% 34%"
                         ]
                         []
                     ]

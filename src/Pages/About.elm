@@ -1,12 +1,15 @@
 module Pages.About exposing (Model, Msg, page)
 
+import Dict
 import Effect exposing (Effect)
 import Html exposing (Html)
 import Html.Attributes as Attr
+import Html.Events
 import Layouts
 import Layouts.Footer
 import Page exposing (Page)
 import Route exposing (Route)
+import Route.Path
 import Shared
 import View exposing (View)
 
@@ -63,15 +66,28 @@ init () =
 
 
 type Msg
-    = NoOp
+    = HomeButtonClicked
+
+
+homeButton : { icon : String } -> Html Msg
+homeButton props =
+    Html.a
+        [ Attr.class "button is-text is-large is-fullwidth  is-radiusless"
+        , Html.Events.onClick HomeButtonClicked
+        ]
+        [ Html.i [ Attr.class props.icon ] [] ]
 
 
 update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
-        NoOp ->
+        HomeButtonClicked ->
             ( model
-            , Effect.none
+            , Effect.pushRoute
+                { path = Route.Path.Home_
+                , query = Dict.empty
+                , hash = Nothing
+                }
             )
 
 
@@ -94,6 +110,7 @@ view model =
     , body =
         [ -- Html.text "/about"
           aboutMe
+        , homeButton { icon = "fa-solid fa-house" }
         ]
     }
 

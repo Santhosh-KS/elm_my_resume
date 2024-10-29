@@ -1,2 +1,4 @@
 github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=
 github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=
+github.com/tree-sitter/tree-sitter-javascript v0.23.0 h1:ZaCwxWjMg0byrhDjWboLosVbXqCaeTpQmZVotOvB0k8=
+github.com/tree-sitter/tree-sitter-javascript v0.23.0/go.mod h1:SFJmRal3tB4GcacLVBNC2G3nWviiYz6VYMWnVpk3qRo=

@@ -15,25 +15,19 @@ func (app *application) uplaod(w http.ResponseWriter, r *http.Request) {
 	r.ParseMultipartForm(10 << 20)
 
 	// 2. Retrieve file from posted form data
-
 	file, handler, err := r.FormFile("myFile")
 	if err != nil {
-		fmt.Println("Error retriveiving file from form-data")
+		fmt.Println("Error retriveiving file from form-data: err - ", err)
 		return
 	}
 	defer file.Close()
+	fmt.Println("form-data with myFile success")
 
 	fmt.Printf("Upldated file: %+v\n", handler.Filename)
 	fmt.Printf("file size: %+v\n", handler.Size)
 	fmt.Printf("MIME Header: %+v\n", handler.Header)
-	/* tempFolderPath := "/tmp/tmp-images"
-	tempFileName := "uploaded_t.html" */
-	/* fmt.Sprintf("upload-%s-*.%s",
-	fileNameWithoutExtension(handler.Filename), filepath.Ext(handler.Filename)) */
 
 	// 3. write temp file in the server
-	// tempfile, err := ioutil.TempFile("temp-images", "upload-*.png")
-	// tempfile, err := os.CreateTemp("/tmp/tmp-images/", "upload-*.html")
 	tempfile, err := os.Create("/tmp/" + handler.Filename)
 
 	if err != nil {
@@ -58,6 +52,4 @@ func (app *application) uplaod(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("SUCCESS: File ", n)
 	return
-
-	// return if operation is successful or not.
 }

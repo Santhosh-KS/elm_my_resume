@@ -12,5 +12,6 @@ func (app *application) routes() http.Handler {
 
 	router.HandlerFunc(http.MethodGet, "/v1/healthcheck", app.healthcheckHandler)
 	router.HandlerFunc(http.MethodPost, "/v1/upload", app.uplaod)
-	return router
+	return app.enableCORS(router)
+	// return router
 }

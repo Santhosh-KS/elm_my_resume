@@ -1,8 +1,13 @@
 module Pages.Upload exposing (Model, Msg, page)
 
+import Api.UploadFiles
 import Effect exposing (Effect)
+import File exposing (File)
 import Html exposing (Html)
 import Html.Attributes as Attr
+import Html.Events
+import Http
+import Json.Decode as D
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
@@ -24,12 +29,12 @@ page shared route =
 
 
 type alias Model =
-    {}
+    List File
 
 
 init : () -> ( Model, Effect Msg )
 init () =
-    ( {}
+    ( []
     , Effect.none
     )
 
@@ -39,16 +44,49 @@ init () =
 
 
 type Msg
-    = NoOp
+    = GotFiles (List File)
+    | UploadButtonClicked
+    | UploadApiResponded (Result Http.Error String)
 
 
 update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
-        NoOp ->
+        GotFiles files ->
+            let
+                a =
+                    Http.post
+
+                _ =
+                    Debug.log "TEST" files
+            in
+            ( files, Effect.none )
+
+        UploadButtonClicked ->
+            let
+                _ =
+                    Debug.log "UploadButtonClicked" "calling post"
+            in
             ( model
-            , Effect.none
+            , Api.UploadFiles.post
+                { onResponse = UploadApiResponded
+                , files = model
+                }
             )
+
+        UploadApiResponded (Ok value) ->
+            let
+                _ =
+                    Debug.log "UploadApiResponded OK" "OK"
+            in
+            ( model, Effect.none )
+
+        UploadApiResponded (Err httpErr) ->
+            let
+                _ =
+                    Debug.log "UploadApiResponded ERR" "ERR"
+            in
+            ( model, Effect.none )
 
 
 
@@ -66,30 +104,34 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Upload"
+    { title = "Pages.Nu"
     , body =
-        [ -- Html.text "/upload"
-          uploadView
+        [ -- Html.text "/nu"
+          m
         ]
     }
 
 
-uploadView : Html msg
-uploadView =
-    Html.form
-        [ Attr.action "http://localhost:4000/v1/upload"
-        , Attr.enctype "multipart/form-data"
-        , Attr.method "post"
-        ]
-        [ Html.h1 [] [ Html.text "File upload example" ]
-        , Html.input
-            [ Attr.type_ "file"
-            , Attr.name "myFile"
+m : Html Msg
+m =
+    Html.form []
+        [ Html.div []
+            [ Html.input
+                [ Attr.type_ "file"
+
+                -- , Attr.multiple True
+                , Html.Events.on "change" (D.map GotFiles filesDecoder)
+                ]
+                []
+            , Html.button
+                [ Attr.type_ "submit"
+                , Html.Events.onClick UploadButtonClicked
+                ]
+                [ Html.text "My New upload.." ]
             ]
-            []
-        , Html.input
-            [ Attr.type_ "submit"
-            , Attr.value "Upload file.."
-            ]
-            []
         ]
+
+
+filesDecoder : D.Decoder (List File)
+filesDecoder =
+    D.at [ "target", "files" ] (D.list File.decoder)

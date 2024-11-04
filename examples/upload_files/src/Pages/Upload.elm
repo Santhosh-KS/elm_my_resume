@@ -104,30 +104,30 @@ subscriptions model =
 
 view : Model -> View Msg
 view model =
-    { title = "Pages.Nu"
+    { title = "Upload Example"
     , body =
         [ -- Html.text "/nu"
-          m
+          m model
         ]
     }
 
 
-m : Html Msg
-m =
+m : Model -> Html Msg
+m model =
     Html.form []
         [ Html.div []
-            [ Html.input
-                [ Attr.type_ "file"
-
-                -- , Attr.multiple True
-                , Html.Events.on "change" (D.map GotFiles filesDecoder)
-                ]
-                []
-            , Html.button
-                [ Attr.type_ "submit"
-                , Html.Events.onClick UploadButtonClicked
-                ]
-                [ Html.text "My New upload.." ]
+            [ {- Html.input
+                     [ Attr.type_ "file"
+                     , Html.Events.on "change" (D.map GotFiles filesDecoder)
+                     ]
+                     []
+                 , Html.button
+                     [ Attr.type_ "submit"
+                     , Html.Events.onClick UploadButtonClicked
+                     ]
+                     [ Html.text "My New upload.." ]
+              -}
+              newUploadView model
             ]
         ]
 
@@ -135,3 +135,36 @@ m =
 filesDecoder : D.Decoder (List File)
 filesDecoder =
     D.at [ "target", "files" ] (D.list File.decoder)
+
+
+newUploadView : Model -> Html Msg
+newUploadView model =
+    let
+        f =
+            List.map File.name model |> String.join " "
+    in
+    Html.div [ Attr.class "container" ]
+        [ Html.h1 [ Attr.class "title" ] [ Html.text "Upload File Example.." ]
+        , Html.div [ Attr.class "file has-name" ]
+            [ Html.label [ Attr.class "file-label" ]
+                [ Html.input
+                    [ Attr.class "file-input"
+                    , Attr.type_ "file"
+                    , Html.Events.on "change" (D.map GotFiles filesDecoder)
+                    , Attr.name "SomeName"
+                    ]
+                    []
+                , Html.span [ Attr.class "file-cta" ]
+                    [ Html.i [ Attr.class "fas fa-upload" ] []
+                    , Html.span [ Attr.class "file-label" ] [ Html.text "Choose a file" ]
+                    ]
+                , Html.span [ Attr.class "file-name" ] [ Html.text f ]
+                ]
+            ]
+        , Html.button
+            [ Attr.class "button is-primary"
+            , Attr.type_ "submit"
+            , Html.Events.onClick UploadButtonClicked
+            ]
+            [ Html.text "My New upload.." ]
+        ]

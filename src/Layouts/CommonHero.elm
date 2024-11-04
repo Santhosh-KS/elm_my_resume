@@ -216,6 +216,8 @@ profilePicview props route =
                         [ Attr.class "is-128x128"
                         , Attr.src "/meSmall.png"
                         , Attr.style "border-radius" "46% 54% 98% 2% / 66% 49% 51% 34%"
+                        , Attr.style "border-style" "double"
+                        , Attr.style "border-widht" "10rem"
                         ]
                         []
                     ]

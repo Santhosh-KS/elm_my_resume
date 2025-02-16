@@ -191,6 +191,7 @@ programmingList =
     , "Swift"
     , "Matlab"
     , "Elm"
+    , "Elixir"
     , "Javascript"
     , "Fullstack"
     , "PostgreSQL"

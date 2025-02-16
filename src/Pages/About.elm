@@ -116,7 +116,7 @@ view model =
 
 
 section1 =
-    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift, and Matlab. I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications in multiple domains such as Automotive, Telecommunications etc.."
+    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift, Matlab, Erlang and Elixir (Phoenix Live view). I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications in multiple domains such as Automotive, Telecommunications etc.."
 
 
 section2 =

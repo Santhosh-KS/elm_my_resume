@@ -72,6 +72,7 @@ type Msg
     | ComputerVisionAndAIUpskillReadMoreClicked
     | ReactAndElmUpskillReadMoreClicked
     | GoAndElmUpskillReadMoreClicked
+    | ElxirUpskillReadMoreClicked
     | Jan2023ToMay2024ReadMoreClicked
     | April2021ToDec2022ReadMoreClicked
     | May2020ToMar2021ReadMoreClicked
@@ -138,6 +139,15 @@ update msg model =
             )
 
         GoAndElmUpskillReadMoreClicked ->
+            ( model
+            , Effect.pushRoute
+                { path = Route.Path.LearningGo
+                , query = Dict.empty
+                , hash = Nothing
+                }
+            )
+
+        ElxirUpskillReadMoreClicked ->
             ( model
             , Effect.pushRoute
                 { path = Route.Path.LearningGo
@@ -493,6 +503,18 @@ sept2008ToMay2011 =
 -}
 
 
+elixir : ItemContent
+elixir =
+    { content = { key = "Sept 2024: Full Stack development Project", value = "Project" }
+    , icon = { icon = " fa-solid fa-award " }
+    , projectDetails =
+        [ { key = "Project", value = "Started building full stack applications using Elxir and Phoenix Live view for one of my client in Germany." }
+        ]
+    , event = ElxirUpskillReadMoreClicked
+    , logo = ""
+    }
+
+
 goAndElm : ItemContent
 goAndElm =
     { content = { key = "Backend", value = "Upskill" }
@@ -621,7 +643,7 @@ opencvAward =
 
 
 section1 =
-    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift, and Matlab. I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications in multiple domains such as Automotive, Telecommunications etc.."
+    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift,Matlab, Erlang and Elixir (Phoenix Live view). I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications in multiple domains such as Automotive, Telecommunications etc.."
 
 
 aboutMe : Html Msg
@@ -653,7 +675,8 @@ timelineView model =
              [ Html.span [ Attr.class "tag is-medium is-primary is-centered" ] [ Html.text "Start" ]
              ]
           -}
-          timeLineItemView june2024
+          timeLineItemView elixir
+        , timeLineItemView june2024
         , timeLineItemView may2024
         , timeLineItemView goAndElm
         , timeLineItemView reactAndElm

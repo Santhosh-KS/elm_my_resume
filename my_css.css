@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Poppins|Kaushan+Script");
+
+
+.hero #fancy {
+  font-family: 'Kaushan Script', sans-serif;
+  transform: rotate(-5deg);
+  font-size: 5rem;
+  color: whitesmoke;
+}
+
+.hero #fancysubtitle {
+  font-family: 'Kaushan Script', sans-serif;
+  transform: rotate(-5deg);
+  font-size: 3rem;
+  color: whitesmoke;
+}
+/* contactus */
+.social-media {
+  margin-top: 30px;
+}
+
+.social-media a {
+  margin-right: 10px;
+}
+
+.field:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+
+  .navbar {
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .hero.is-fullheight {
+    min-height: calc(100vh - 6.5rem - 40px);
+  }
+}
+
+/* Signup form 
+* https://bulmatemplates.github.io/bulma-templates/templates/register.html
+* */
+
+    :root {
+      --brandColor: hsl(166, 67%, 51%);
+      --background: rgb(247, 247, 247);
+      --textDark: hsla(0, 0%, 0%, 0.66);
+      --textLight: hsla(0, 0%, 0%, 0.33);
+    }
+
+    body {
+      background: var(--background);
+      height: 100vh;
+      color: var(--textDark);
+    }
+
+    .field:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    .register {
+      margin-top: 10rem;
+      background: white;
+      border-radius: 10px;
+    }
+
+    .left,
+    .right {
+      padding: 4.5rem;
+    }
+
+    .left {
+      border-right: 5px solid var(--background);
+    }
+
+    .left .title {
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .left .colored {
+      color: var(--brandColor);
+      font-weight: 500;
+      margin-top: 1rem !important;
+      letter-spacing: -1px;
+    }
+
+    .left p {
+      color: var(--textLight);
+      font-size: 1.15rem;
+    }
+
+    .right .title {
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .right .description {
+      margin-top: 1rem;
+      margin-bottom: 1rem !important;
+      color: var(--textLight);
+      font-size: 1.15rem;
+    }
+
+    .right small {
+      color: var(--textLight);
+    }
+
+    input {
+      font-size: 1rem;
+    }
+
+    input:focus {
+      border-color: var(--brandColor) !important;
+      box-shadow: 0 0 0 1px var(--brandColor) !important;
+    }
+
+    .fab,
+    .fas {
+      color: var(--textLight);
+      margin-right: 1rem;
+    }
+
+

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEPLOYDIR="/tmp/hostinger_deploy/about_me"
-REPO=$1
+REPO="git@github.com:Santhosh-KS/about_me.git"
 
 rm -rf ${DEPLOYDIR}
 

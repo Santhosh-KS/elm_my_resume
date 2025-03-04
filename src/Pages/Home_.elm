@@ -385,6 +385,28 @@ may2020ToMar2021 =
     }
 
 
+nov2024ToPresent : ItemContent
+nov2024ToPresent =
+    { content = { key = "Nov 2024 To Present", value = "Full stack application development using NestJS and NextJS" }
+    , icon = { icon = "fa-solid fa-handshake-angle" }
+    , projectDetails =
+        [ { key = "Role", value = "Project Manager and Solution Architect" }
+        , { key = "Project", value = "Full stack web application for GastroSmart" }
+        , { key = "Client", value = "GastroSmart" }
+        , { key = "Location", value = "Bengaluru, India" }
+        , { key = "Domain", value = "Hospitality" }
+        , { key = "Technologies", value = "NestJS, NextJS, Elixir, Phoenix Live view, JS, TS, PostgresSQL" }
+        , { key = "Tools", value = "Confluence, JIRA, Github, CI-CD, Github-Actions, Azure" }
+
+        {- , { key = "TeamName", value = "Vikings" }
+           , { key = "Soft skills", value = "Leadership, Team management, Customer interactions, Project delivery" }
+        -}
+        ]
+    , event = NoOp
+    , logo = ""
+    }
+
+
 april2021ToDec2022 : ItemContent
 april2021ToDec2022 =
     { content = { key = "April 2021 To Dec 2022", value = "ASPICE SYS.2 and SYS.5 verification and validation using DSpace." }
@@ -643,7 +665,7 @@ opencvAward =
 
 
 section1 =
-    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift,Matlab, Erlang and Elixir (Phoenix Live view). I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications in multiple domains such as Automotive, Telecommunications etc.."
+    "With 17 years of experience in the software engineering industry, I am passionate about building innovative solutions that drive technology forward. My journey has taken me through a diverse range of technologies, including C, C++, Go, Python, Swift, and Matlab. I have a strong background in embedded systems and the networking domain, which has allowed me to tackle complex challenges and deliver robust, scalable applications in multiple domains such as Automotive, Telecommunications etc.."
 
 
 aboutMe : Html Msg
@@ -675,7 +697,8 @@ timelineView model =
              [ Html.span [ Attr.class "tag is-medium is-primary is-centered" ] [ Html.text "Start" ]
              ]
           -}
-          timeLineItemView elixir
+          timeLineItemView nov2024ToPresent
+        , timeLineItemView elixir
         , timeLineItemView june2024
         , timeLineItemView may2024
         , timeLineItemView goAndElm

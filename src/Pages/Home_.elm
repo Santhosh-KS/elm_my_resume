@@ -324,14 +324,14 @@ june2024 =
 
 may2025 : ItemContent
 may2025 =
-    { content = { key = "May 2025 : Dusseldorf Germany", value = "Relocated back to Germany" }
+    { content = { key = "May 2025 : Dusseldorf Germany", value = "Moved to Dusseldorf Germany." }
     , icon = { icon = "fa-solid fa-plane-arrival" }
     , projectDetails =
         [ { key = "NewRole", value = "Actively looking for Open roles.." }
         , { key = "Location", value = "Dusseldorf Germany" }
         ]
     , event = NoOp
-    , logo = "munich.png"
+    , logo = "dusseldorf.webp"
     }
 
 

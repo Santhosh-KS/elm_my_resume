@@ -322,6 +322,19 @@ june2024 =
     }
 
 
+may2025 : ItemContent
+may2025 =
+    { content = { key = "May 2025 : Dusseldorf Germany", value = "Relocated back to Germany" }
+    , icon = { icon = "fa-solid fa-plane-arrival" }
+    , projectDetails =
+        [ { key = "NewRole", value = "Actively looking for Open roles.." }
+        , { key = "Location", value = "Dusseldorf Germany" }
+        ]
+    , event = NoOp
+    , logo = "munich.png"
+    }
+
+
 may2024 : ItemContent
 may2024 =
     { content = { key = "May 2024 : 5 years @KPIT", value = "Completed 5 years at KPIT Gmbh Munich as Senior Solution Architect" }
@@ -391,8 +404,8 @@ nov2024ToPresent =
     , icon = { icon = "fa-solid fa-handshake-angle" }
     , projectDetails =
         [ { key = "Role", value = "Project Manager and Solution Architect" }
-        , { key = "Project", value = "Full stack web application for GastroSmart" }
-        , { key = "Client", value = "GastroSmart" }
+        , { key = "Project", value = "Full stack web application for GastroSmart GmbH" }
+        , { key = "Client", value = "GastroSmart GmbH" }
         , { key = "Location", value = "Bengaluru, India" }
         , { key = "Domain", value = "Hospitality" }
         , { key = "Technologies", value = "NestJS, NextJS, Elixir, Phoenix Live view, JS, TS, PostgresSQL" }
@@ -697,7 +710,8 @@ timelineView model =
              [ Html.span [ Attr.class "tag is-medium is-primary is-centered" ] [ Html.text "Start" ]
              ]
           -}
-          timeLineItemView nov2024ToPresent
+          timeLineItemView may2025
+        , timeLineItemView nov2024ToPresent
         , timeLineItemView elixir
         , timeLineItemView june2024
         , timeLineItemView may2024
